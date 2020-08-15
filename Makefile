@@ -46,6 +46,13 @@ hello world!
 endef
 export viewContent
 
+define makeContent
+.PHONY: serve
+serve:
+	php -S localhost:8000 -t public
+endef
+export makeContent
+
 .PHONY: build
 build:
 	mkdir -p public
@@ -55,11 +62,12 @@ build:
 	touch public/index.php
 	touch src/Controller/Index.php
 	touch src/View/index.php
-
+	touch Makefile
 
 	echo "$$appContent" >> public/index.php
 	echo "$$controllerContent" >> src/Controller/Index.php
 	echo "$$viewContent" >> src/View/index.php
+	echo "$$makeContent" >> Makefile
 	echo '[NEXT STEP]: Add autoload snippet to composer.json file and run `composer dumpautoload` from command line.';
 	echo '"autoload": {\
         "psr-4": {\

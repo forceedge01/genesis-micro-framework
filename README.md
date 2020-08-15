@@ -22,7 +22,7 @@ composer dumpautoload
 Now start local server:
 
 ```bash
-php -S localhost:8000 -t public
+make serve
 ```
 
 open `localhost:8000` in your browser and you should see `hello world!`.
