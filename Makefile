@@ -77,4 +77,4 @@ build:
 
 .PHONY: cleanup
 cleanup:
-	rm -rf public src
+	rm -rf public src Makefile
