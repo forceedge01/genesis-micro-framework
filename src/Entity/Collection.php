@@ -1,6 +1,6 @@
 <?php
 
-namespace Genesis\MicroFramework;
+namespace Genesis\MicroFramework\Entity;
 
 use Genesis\Services\Persistence\Contracts\ModelInterface;
 use Iterator;

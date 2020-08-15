@@ -25,7 +25,7 @@ $router->registerRoutes(
     ]
 );
 
-Config::set('view_path', __DIR__ . '/../view/');
+Config::set('view_path', __DIR__ . '/../src/View/');
 $router->dispatchRequest(new Request());
 ```
 
@@ -45,3 +45,29 @@ Config::set('db_params', [
 ```
 
 And call upon the `getMapperService()` method to persist your models. For more information follow guide here https://github.com/forceedge01/genesis-persistence.
+
+Call a view in your controller like so:
+
+```php
+# src/Controller/Index
+<?php
+
+namespace App\Controller;
+
+use Genesis\MicroFramework\Controller\BaseController;
+
+/**
+ * Index class.
+ */
+class Index extends BaseController
+{
+    public function index()
+    {
+        echo $this->render('index.php', [
+            'name' => 'Abdul'
+        ]);
+    }
+}
+```
+
+Expect to have a view file `src/View/index.php` which renders the variable `name`.

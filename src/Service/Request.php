@@ -9,6 +9,14 @@ class Request
     const TYPE_POST = 'post';
 
     /**
+     * Get path of the request.
+     */
+    public function getPath(): string
+    {
+        return $this->getServer('REQUEST_URI');
+    }
+
+    /**
      * Get a post param.
      */
     public function getPost($key, $default = null, $filter = FILTER_SANITIZE_SPECIAL_CHARS)
