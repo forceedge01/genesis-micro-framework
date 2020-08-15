@@ -1,6 +1,7 @@
 {
     "name": "genesis/micro-framework",
     "description": "Simple classes tied with a convention.",
+    "license": "MIT",
     "require": {
         "genesis/method-persister": "~1.0",
         "genesis/persistence": "~2.0"

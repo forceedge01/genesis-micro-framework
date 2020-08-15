@@ -3,14 +3,17 @@ Genesis micro framework
 
 Bunch of classes with a bit of convention to get your started.
 
-Place the following code in your index file. Assuming it is in the public folder.
+Place the following code in your index file. Assuming that:
+
+- the index file is in the public folder.
+- you have an autoloading rule in composer.json file that points the namespace App\Controller to your controllers folder.
 
 ```php
 <?php
 
-use App\Service\Config;
-use App\Service\Router;
-use App\Service\Request;
+use Genesis\Microframework\Service\Config;
+use Genesis\Microframework\Service\Router;
+use Genesis\Microframework\Service\Request;
 use App\Controller;
 
 require __DIR__ . '/../vendor/autoload.php';
