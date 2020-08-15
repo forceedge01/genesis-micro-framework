@@ -1,0 +1,93 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "3d0a5519643f9612033ca474b81fcc90",
+    "packages": [
+        {
+            "name": "genesis/method-persister",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/forceedge01/method-cacher.git",
+                "reference": "cb2c607ddd554a07e1e78764174a0d10afa2fd71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/forceedge01/method-cacher/zipball/cb2c607ddd554a07e1e78764174a0d10afa2fd71",
+                "reference": "cb2c607ddd554a07e1e78764174a0d10afa2fd71",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Genesis\\MethodPersister\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Allows caching of any method in code.",
+            "keywords": [
+                "caching",
+                "controller cache",
+                "html cache",
+                "method cache",
+                "method caching",
+                "method persist",
+                "persistence"
+            ],
+            "time": "2020-05-15T14:25:02+00:00"
+        },
+        {
+            "name": "genesis/persistence",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/forceedge01/genesis-persistence.git",
+                "reference": "30aa80e5ed0e756d9372699a0fe5e6bc93158219"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/forceedge01/genesis-persistence/zipball/30aa80e5ed0e756d9372699a0fe5e6bc93158219",
+                "reference": "30aa80e5ed0e756d9372699a0fe5e6bc93158219",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.4||~7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5"
+            },
+            "bin": [
+                "bin/db-migrate.php",
+                "bin/db-setup.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Genesis\\Services\\Persistence\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2018-02-06T23:00:48+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
