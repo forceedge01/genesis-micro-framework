@@ -37,7 +37,6 @@ class Index extends BaseController
         echo $$this->render('index.php');
     }
 }
-
 endef
 export controllerContent
 
