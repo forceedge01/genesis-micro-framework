@@ -13,13 +13,7 @@ composer require genesis/micro-framework
 make -f vendor/genesis/micro-framework/Makefile build
 ```
 
-At the end of the output you'll receive a snippet for the composer.json file, add and run:
-
-```bash
-composer dumpautoload
-```
-
-Now start local server:
+At the end of the output you'll receive a snippet for the composer.json file, add and now start local server:
 
 ```bash
 make serve

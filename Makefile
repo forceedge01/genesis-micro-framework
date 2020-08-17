@@ -48,6 +48,7 @@ export viewContent
 define makeContent
 .PHONY: serve
 serve:
+	composer dumpautoload
 	php -S localhost:8000 -t public
 endef
 export makeContent
@@ -69,10 +70,10 @@ build:
 	echo "$$makeContent" >> Makefile
 	echo '[NEXT STEP]: Add autoload snippet to composer.json file and run `composer dumpautoload` from command line.';
 	echo '"autoload": {\
-        "psr-4": {\
-            "App\\": "src/"\
-        }\
-    }';
+    "psr-4": {\
+        "App\\\\": "src/"\
+    }\
+}';
 
 .PHONY: cleanup
 cleanup:
