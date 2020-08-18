@@ -24,6 +24,13 @@ class BaseController
 
     protected static $mapperService;
 
+    /**
+     * Set this array to the configs you'd like to inject.
+     *
+     * @var array
+     */
+    protected $injectConfigs = [];
+
     public function __construct(Router $router, Request $request)
     {
         $this->request = $request;
@@ -59,6 +66,10 @@ class BaseController
 
     public function render(string $view, array $args = [])
     {
+        foreach ($this->injectConfigs as $config) {
+            $args[$config] = Config::get($config);
+        }
+
         extract($args);
         $path = Config::get('view_path') . $view;
 
