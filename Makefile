@@ -1,3 +1,8 @@
+define envContent
+APP_PROFILE=dev
+endef
+export envContent
+
 define appContent
 <?php
 
@@ -7,7 +12,10 @@ use Genesis\MicroFramework\Service\Request;
 use App\Controller;
 
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../src/Config/Config.php';
+/**
+ * Set the `APP_PROFILE` environment variable to use the appropriate config file. 
+ */
+require __DIR__ . '/../src/Config/config-'. getenv('APP_PROFILE') .'.php';
 
 $$router = new Router($$_GET, $$_SERVER);
 $$router->registerRoutes(
@@ -25,9 +33,22 @@ define configContent
 
 use Genesis\MicroFramework\Service\Config;
 
+require __DIR__ . '/config.php';
+
 Config::set('view_path', __DIR__ . '/../View/');
 endef
 export configContent
+
+define profileConfigContent
+<?php
+
+use Genesis\MicroFramework\Service\Config;
+
+require __DIR__ . '/config.php';
+
+Config::set('site_url', 'https://localhost:8000');
+endef
+export profileConfigContent
 
 define controllerContent
 <?php
@@ -69,16 +90,22 @@ build:
 	mkdir -p src/Config
 	mkdir -p src/View
 
+	touch .env
 	touch public/index.php
-	touch src/Config/Config.php
+	touch src/Config/config.php
+	touch src/Config/config-dev.php
+	touch src/Config/config-prod.php
 	touch src/Controller/Index.php
 	touch src/View/index.php
 	touch Makefile
 
+	echo "$$envContent" >> .env
 	echo "$$appContent" >> public/index.php
 	echo "$$controllerContent" >> src/Controller/Index.php
 	echo "$$viewContent" >> src/View/index.php
-	echo "$$configContent" >> src/Config/Config.php
+	echo "$$configContent" >> src/Config/config.php
+	echo "$$profileConfigContent" >> src/Config/config-dev.php
+	echo "$$profileConfigContent" >> src/Config/config-prod.php
 	echo "$$makeContent" >> Makefile
 	echo '[NEXT STEP]: Add autoload snippet to composer.json file and run `composer dumpautoload` from command line.';
 	echo '"autoload": {\
