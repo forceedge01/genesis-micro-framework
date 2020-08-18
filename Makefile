@@ -7,6 +7,7 @@ use Genesis\MicroFramework\Service\Request;
 use App\Controller;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../src/Config/Config.php';
 
 $$router = new Router($$_GET, $$_SERVER);
 $$router->registerRoutes(
@@ -15,10 +16,18 @@ $$router->registerRoutes(
     ]
 );
 
-Config::set('view_path', __DIR__ . '/../src/View/');
 $$router->dispatchRequest(new Request());
 endef
 export appContent
+
+define configContent
+<?php
+
+use Genesis\MicroFramework\Service\Config;
+
+Config::set('view_path', __DIR__ . '/../View/');
+endef
+export configContent
 
 define controllerContent
 <?php
@@ -57,9 +66,11 @@ export makeContent
 build:
 	mkdir -p public
 	mkdir -p src/Controller
+	mkdir -p src/Config
 	mkdir -p src/View
 
 	touch public/index.php
+	touch src/Config/Config.php
 	touch src/Controller/Index.php
 	touch src/View/index.php
 	touch Makefile
@@ -67,6 +78,7 @@ build:
 	echo "$$appContent" >> public/index.php
 	echo "$$controllerContent" >> src/Controller/Index.php
 	echo "$$viewContent" >> src/View/index.php
+	echo "$$configContent" >> src/Config/Config.php
 	echo "$$makeContent" >> Makefile
 	echo '[NEXT STEP]: Add autoload snippet to composer.json file and run `composer dumpautoload` from command line.';
 	echo '"autoload": {\

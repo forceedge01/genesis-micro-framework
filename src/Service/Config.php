@@ -2,6 +2,8 @@
 
 namespace Genesis\MicroFramework\Service;
 
+use Exception;
+
 class Config
 {
     private static $config;
