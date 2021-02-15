@@ -15,7 +15,11 @@ require __DIR__ . '/../vendor/autoload.php';
 /**
  * Set the `APP_PROFILE` environment variable to use the appropriate config file. 
  */
-require __DIR__ . '/../src/Config/config-'. getenv('APP_PROFILE') .'.php';
+$$env = getenv('APP_PROFILE');
+if (!$$env) {
+    $$env = 'dev';
+}
+require __DIR__ . '/../src/Config/config-'. $$env .'.php';
 
 $$router = new Router($$_GET, $$_SERVER);
 $$router->registerRoutes(
@@ -32,8 +36,6 @@ define configContent
 <?php
 
 use Genesis\MicroFramework\Service\Config;
-
-require __DIR__ . '/config.php';
 
 Config::set('view_path', __DIR__ . '/../View/');
 endef
@@ -71,7 +73,15 @@ endef
 export controllerContent
 
 define viewContent
-hello world!
+<!DOCTYPE>
+<html>
+<head>
+	<title>Genesis MicroFramework!</title>
+</head>
+<body>
+	<h1>Hello Genesis user! Start coding...</h1>
+</body>
+</html>
 endef
 export viewContent
 
