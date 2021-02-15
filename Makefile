@@ -3,6 +3,19 @@ APP_PROFILE=dev
 endef
 export envContent
 
+define gitignoreContent
+vendor
+endef
+export gitignoreContent
+
+define readmeContent
+Thanks for choosing the genesis micro framework. Start off by running `make serve` to start the project and adding code to the controller
+in `src/Controller`. The routes are registered in the `public/index.php` file.
+
+Check out the project readme for more information.
+endef
+export readmeContent
+
 define appContent
 <?php
 
@@ -80,6 +93,11 @@ define viewContent
 </head>
 <body>
 	<h1>Hello Genesis user! Start coding...</h1>
+
+	<p>Thanks for choosing the genesis micro framework. Start off by running `make serve` to start the project and adding code to the controller
+	in `src/Controller`. The routes are registered in the `public/index.php` file.</p>
+
+	<p>Check out the project readme for more information.</p>
 </body>
 </html>
 endef
@@ -101,6 +119,8 @@ build:
 	mkdir -p src/View
 
 	touch .env
+	touch .gitignore
+	touch README.md
 	touch public/index.php
 	touch src/Config/config.php
 	touch src/Config/config-dev.php
@@ -109,6 +129,8 @@ build:
 	touch src/View/index.php
 	touch Makefile
 
+	echo "$$readmeContent" >> README.md
+	echo "$$gitignoreContent" >> .gitignore
 	echo "$$envContent" >> .env
 	echo "$$appContent" >> public/index.php
 	echo "$$controllerContent" >> src/Controller/Index.php
